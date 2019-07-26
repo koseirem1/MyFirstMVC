@@ -1,0 +1,130 @@
+﻿
+<!DOCTYPE html>
+<html lang="tr-TR">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        #demo {
+            background-color: #333333;
+        }
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">İrem Köse</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item  @(ViewContext.RouteData.Values["action"].ToString()=="Index"?"active":"")">
+                            <a class="nav-link" href=" @Url.Action("Index", "Home") ">
+                                Anasayfa
+                                @if (ViewContext.RouteData.Values["action"].ToString() == "Index")
+                                {
+                                    <span class="sr-only">(şu an buradasınız)</span>
+                                }
+                                </a>
+                        </li>
+                        <li class="nav-item  @(ViewContext.RouteData.Values["action"].ToString()=="About"?"active":"")" >
+                            <a class="nav-link" href="@Url.Action("About","Home")">
+                            Hakkımda
+                            @if(ViewContext.RouteData.Values["action"].ToString()=="About")
+                                {
+                            <span class="sr-only">(şu an buradasınız)</span>
+                            }</a>
+                        </li>
+                        <li class="nav-item  @(ViewContext.RouteData.Values["action"].ToString()=="Projects"?"active":"")">
+                            <a class="nav-link" href="@Url.Action("Projects","Home")">
+                            Projelerim
+                             @if (ViewContext.RouteData.Values["action"].ToString() == "Projects")
+                             {
+                            <span class="sr-only">(şu an buradasınız)</span>} </a>
+
+                        </li>
+                        <li class="nav-item  @(ViewContext.RouteData.Values["action"].ToString()=="Contact"?"active":"")">
+                            <a class="nav-link" href="@Url.Action("Contact","Home")">
+                                İletişim
+                                @if (ViewContext.RouteData.Values["action"].ToString() == "Contacts")
+                                {
+                                    <span class="sr-only">(şu an buradasınız)</span>}
+                            </a>
+                        </li>
+
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" action="search.php">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Ara" name="q">
+                        <button class="btn btn-success my-2 my-sm-0" type="submit">Ara</button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+
+     @RenderBody()
+
+
+
+        <footer class="footer bg-dark text-light p-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Hakkında</h5>
+                    <p> Bu benim kişisel web sitemdir.</p>
+                    <div class="social-media">
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href="https://tr.linkedin.com/in/irem-k%C3%B6se-4b3a88166"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/koseirem1"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5>Bağlantılar</h5>
+                    <ul>
+                        <li><a href="@Url.Action("About","Home")">Hakkımda</a></li>
+                        <li><a href="@Url.Action("Projects","Home")">Projelerim</a></li>
+                        <li><a href="@Url.Action("Contact","Home")">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Bilgilendirmeler</h5>
+                    <ul>
+                        <li> Çerez kullanımı</li>
+                        <li>Kullanım Koşulları</li>
+                        <li><a href="@Url.Action("PrivacyPolicy","Home")">Gizlilik Politikası</a></li>
+                        <li><a href="@Url.Action("Kvkk","Home")">KVKK Aydınlatma Metni</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Telif Hakkı</h5>
+                    <p>&copy; 2019- Her hakkı saklıdır.</p>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

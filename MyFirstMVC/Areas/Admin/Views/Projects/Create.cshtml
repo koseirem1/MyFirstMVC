@@ -1,0 +1,85 @@
+﻿@model MyFirstMVC.Models.Project
+@{
+    ViewBag.Title = "Create";
+}
+<!--ckeditor den body araştırması yaptık.-->
+<script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
+<style>
+    .ck-editor__editable_inline {
+        height: 300px;
+    }
+</style>
+
+<h2>Yeni Proje</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false)
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.CategoryId, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.CategoryId,(IEnumerable<SelectListItem>) ViewBag.Categories,"Kategori Seçiniz", new {  @class = "form-control"  })
+            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Body, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Body, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            <script>
+                ClassicEditor
+                    .create(document.querySelector('#Body'))
+                    .then(editor => {
+                        console.log(editor);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            </script>
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Photo, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-10 col-md-offset-2">
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyFirstMVC.Models.Project>
+
+<br>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Projects</li>
+    </ol>
+</nav>
+
+<br>
+<h1 class="ml-5;mb-5">Projelerim</h1>
+<div class="col-md-12">
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+             aria-labelledby="v-pills-home-tab">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-md-4">
+                        <div class="card d-block" style="height:500px">
+                            <img src="/images/@item.Photo" class="card-img-top" alt="@item.Title">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <p class="card-text"> @item.Description</p>
+                                <a href="#" class="btn btn-primary"
+                                   style="position: absolute;bottom: 15px;right: 10px;">Ayrıntılar</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+               
+            </div>
+        </div>
+
+</div>
+    </div>
